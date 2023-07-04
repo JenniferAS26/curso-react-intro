@@ -1,0 +1,25 @@
+.input-container {
+    /* position: relative; */
+    width: 350px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+.TodoSearch {
+    border-radius: 7px;
+    width: 350px;
+    height: 70px;
+    border: none;
+    background-color: #e4ebc9;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1D572E;
+    letter-spacing: 2px;
+}
+
+.TodoSearch::placeholder {
+    color: #77B278;;
+
+}
