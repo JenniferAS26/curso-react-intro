@@ -1,0 +1,10 @@
+.item-loading-container {
+    width: 70%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0e4d069;
+    border-radius: 10px;
+    padding: 0 10px;
+}

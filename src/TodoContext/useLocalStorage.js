@@ -27,19 +27,27 @@ function useLocalStorage(itemName, initialValue) {
     }, 2000);
   }, []);
   
-  const saveItems = (newItem) => {
+  const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
   };
 
-  console.log(item);
-
   return {
     item, 
-    saveItems,
+    saveItem,
     loading,
     error
   };
 }
 
 export { useLocalStorage };
+
+// localStorage.removeItem('TODOS_V1');
+// const defaultTodos = [
+//   { text: 'Cortar cebolla', completed: false },
+//   { text: 'Tomar agua', completed: true },
+//   { text: 'Llorar con la Llorona', completed: false },
+//   { text: 'Hacer el desayuno', completed: true },
+//   { text: 'Usar estados derivados', completed: true },
+// ]
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
