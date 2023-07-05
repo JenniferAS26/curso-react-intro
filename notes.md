@@ -16,3 +16,19 @@ la sintaxis usual para usar Custom Hooks es iniciar la funcion con la parabra 'u
 
     }
 ```
+### useEffect
+-  Si guardamos algo en un efecto no se va a ejecutar en el mismo orden de siempre, sino que se va a ejecutar después, al final, si le enviamos un segundo argumento al efecto por ejemplo un array por ejemplo el contenido de nuestro efecto solo se va a ejecutar una vez, si le enviamos un estado en particular a ese efecto éste se va a volver a ejecutar todas las veces que cambie ese estado si cambia el segundo argumento, se dispara el efecto
+useEffect es un ciclo infinito
+```
+    console.log('Log 1');
+  // React.useEffect(() => {
+  //   console.log('Looooooog 2');
+  // });
+  // React.useEffect(() => {
+  //   console.log('Looooooog 2');
+  // }, []); // prevenimos que se ejecute infinitamente y solo se carga la primera vez
+  React.useEffect(() => {
+    console.log('Looooooog 2');
+  }, [totalTodos]);
+  console.log('Log 3');
+```

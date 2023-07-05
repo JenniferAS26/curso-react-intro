@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AppUI } from "./AppUI";
 import { useLocalStorage } from "./useLocalStorage";
 
+// localStorage.removeItem('TODOS_V1');
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: false },
 //   { text: 'Tomar agua', completed: true },
@@ -10,10 +11,14 @@ import { useLocalStorage } from "./useLocalStorage";
 //   { text: 'Usar estados derivados', completed: true },
 // ]
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-// localStorage.removeItem('TODOS_V1');
 
 function App() {
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error
+  } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = useState('');
 
   const completedTodo = todos.filter(todo => !!todo.completed).length; 
@@ -42,6 +47,8 @@ function App() {
   };
   return (
     <AppUI
+    loading={loading}
+    error={error}
     completedTodo={completedTodo}
     totalTodos={totalTodos}
     searchValue={searchValue}
