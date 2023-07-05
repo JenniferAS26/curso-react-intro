@@ -1,14 +1,20 @@
+import React from 'react';
 import './TodoCounter.css';
+import { TodoContext } from '../TodoContext';
 
-function TodoCounter({ total, completed }) {
+function TodoCounter() {
+    const  { 
+        completedTodo,
+        totalTodos
+    } = React.useContext(TodoContext);
     return (
-        total === completed ?
+        totalTodos === completedTodo ?
         <h1 className='TodoCounter'>
             Felicidades has completado todos tus TODOS
         </h1>
         :
         <h1 className='TodoCounter'>
-            Has completado <span>{completed}</span> de <span>{total}</span> TODOS
+            Has completado <span>{completedTodo}</span> de <span>{totalTodos}</span> TODOS
         </h1>
     );
 }
