@@ -1,0 +1,17 @@
+.image-container {
+    width: 450px;
+    height: 450px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.image-container p {
+    font-size: 30px;
+    color: #1D572E;
+    font-weight: 700;
+    letter-spacing: 2px;
+}

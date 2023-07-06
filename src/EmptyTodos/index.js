@@ -1,11 +1,15 @@
 import React from 'react';
 import './EmptyTodos.css'
+import image from '../assets/rabbit.png'
 
 function EmptyTodos() {
     
     return (
         <div className="input-container">
-            <p>Crea tu primer TODO</p>
+            <div className='image-container'>
+                <img src={image} />
+                <p>Nueva tarea</p>
+            </div>
         </div>
     );
 }

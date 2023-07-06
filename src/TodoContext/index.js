@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-
+import { text } from "@fortawesome/fontawesome-svg-core";
 const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
@@ -11,6 +11,7 @@ function TodoProvider({ children }) {
         error
       } = useLocalStorage('TODOS_V1', []);
       const [searchValue, setSearchValue] = useState('');
+      const [openModal, setOpenModal] = useState(false);
     
       const completedTodo = todos.filter(todo => !!todo.completed).length; 
       // Con esta sintaxis -> !!todo.completed <- garantizamos que nos devuelve un true o un false no un elemento
@@ -22,6 +23,15 @@ function TodoProvider({ children }) {
           const searchText = searchValue.toLowerCase();
           return todoText.includes(searchText);
       });
+
+      const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+          text,
+          completed: false,
+        })
+        saveTodos(newTodos);
+      }
     
       const completeTodo = (text) => {
         const newTodos = [...todos];
@@ -48,6 +58,9 @@ function TodoProvider({ children }) {
             searchedTodos,
             completeTodo,
             deleteTodo,
+            openModal,
+            setOpenModal,
+            addTodo,
             }}>
             {children}
         </TodoContext.Provider>

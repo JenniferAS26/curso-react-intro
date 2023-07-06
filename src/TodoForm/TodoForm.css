@@ -1,0 +1,72 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+.TodoForm-container {
+    width: 350px;
+    height: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #77B278;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 60px repeat(2, auto);
+    grid-template-areas: "label label"
+        "textarea textarea"
+        "cancelbtn addbtn";
+}
+
+.TodoForm-container .label-field {
+    grid-area: label;
+    align-self: flex-end;
+    color: #E4EBC9;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.TodoForm-container .textarea-field {
+    grid-area: textarea;
+    width: 280px;
+    height: 100px;
+    border-radius: 15px;
+    padding: 35px;
+    background-color: #E4EBC9;
+    font-family: 'Poppins', sans-serif;                                           
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+}
+
+.textarea-field:focus {
+    outline: 1px solid #091f10;
+}
+
+.TodoForm-container .textarea-field::placeholder {
+    color: #1D572E;
+}
+
+.TodoForm-button {
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    height: 45px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.TodoForm-container .TodoForm-button--cancel {
+    cursor: pointer;
+    grid-area: cancelbtn;
+    background-color: #E4EBC9;
+    color: #77B278;
+}
+
+.TodoForm-container .TodoForm-button--add {
+    cursor: pointer;
+    grid-area: addbtn;
+    background-color: #1D572E;
+    color: #E4EBC9;
+}
