@@ -9,8 +9,9 @@ import { TodosLoading } from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
 import { TodoForm } from '../TodoForm';
-import { Modal } from "../Modal";
 import { TodoHeader } from "../TodoHeader";
+import { Modal } from "../Modal";
+import { ChangeAlertWithStorageListener } from "../ChangeAlert";
 
 function App() {
   const {
@@ -25,7 +26,8 @@ function App() {
     searchValue,
     setSearchValue,
     addTodo,
-    setOpenModal
+    setOpenModal,
+    syncronizeTodos
   } = useTodos();
   
   return (
@@ -83,6 +85,9 @@ function App() {
             />
           </Modal>
       )}
+      <ChangeAlertWithStorageListener 
+        syncronize={syncronizeTodos} 
+      />
     </>
   );
 }

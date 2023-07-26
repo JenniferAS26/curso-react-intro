@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function useLocalStorage(itemName, initialValue) {
     
+  const [syncItem, setSyncItem] = useState(true);
   const [item, setItem] = useState(initialValue);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -10,7 +11,6 @@ function useLocalStorage(itemName, initialValue) {
     setTimeout(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
-    
         let parsedItem;
         if (!localStorageItem) {
           localStorage.setItem(itemName, JSON.stringify(initialValue));
@@ -20,23 +20,30 @@ function useLocalStorage(itemName, initialValue) {
           setItem(parsedItem);
         }
         setLoading(false);
+        setSyncItem(true);
       } catch (error) {
         setLoading(false);
         setError(true);
       }
     }, 2000);
-  }, []);
+  }, [syncItem]);
   
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
   };
 
+  const syncronizeItem = () => {
+    setLoading(true);
+    setSyncItem(false);
+  }
+
   return {
     item, 
     saveItem,
     loading,
-    error
+    error,
+    syncronizeItem
   };
 }
 
