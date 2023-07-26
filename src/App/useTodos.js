@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { text } from "@fortawesome/fontawesome-svg-core";
-const TodoContext = React.createContext();
 
-function TodoProvider({ children }) {
+function useTodos() {
     const {
         item: todos,
         saveItem: saveTodos,
@@ -47,25 +45,21 @@ function TodoProvider({ children }) {
         saveTodos(newTodos);
       };
 
-    return (
-        <TodoContext.Provider value={{
-            loading,
-            error,
-            completedTodo,
-            totalTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            completeTodo,
-            deleteTodo,
-            openModal,
-            setOpenModal,
-            addTodo,
-            }}>
-            {children}
-        </TodoContext.Provider>
-    )
+    return {
+      loading,
+      error,
+      completedTodo,
+      totalTodos,
+      searchValue,
+      setSearchValue,
+      searchedTodos,
+      completeTodo,
+      deleteTodo,
+      openModal,
+      setOpenModal,
+      addTodo,
+    }
 }
 
 
-export { TodoContext, TodoProvider }
+export { useTodos };

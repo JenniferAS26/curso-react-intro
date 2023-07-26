@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import './TodoForm.css';
-import { TodoContext } from '../TodoContext';
 
-function TodoForm() {
-    const {
+function TodoForm({
         addTodo,
-        setOpenModal,
-    } = useContext(TodoContext);
+        setOpenModal
+    }) {
     const [newTodoValue, setNewTodoValue] = useState('')
 
     const onSubmit = e => {
