@@ -20,6 +20,9 @@
 }
 
 .TodoSearch::placeholder {
-    color: #77B278;;
+    color: #77B278;
+}
 
+.TodoSearch:disabled {
+    opacity: 0.35;
 }

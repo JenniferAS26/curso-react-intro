@@ -30,7 +30,7 @@ function App() {
   
   return (
     <> {/** React.Fragment */}
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <TodoCounter 
           completedTodo={completedTodo}
           totalTodos={totalTodos}
@@ -40,28 +40,37 @@ function App() {
           setSearchValue={setSearchValue}
         />
       </TodoHeader>
-      <TodoList>
-        {loading && 
-            <>
-              <TodosLoading />
-              <TodosLoading />
-              <TodosLoading />
-              <TodosLoading />
-              <TodosLoading />
-            </>}
-        {error && <TodosError />}
-        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-        {searchedTodos.map(todo => {
-          return( 
-            <TodoItem 
-              key={todo.text} 
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />)
-        })}
-      </TodoList> 
+      <TodoList
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        totalTodos={totalTodos}
+        searchText={searchValue}
+        onError={() => <TodosError />}
+        onLoading={() => <TodosLoading />}
+        onEmptyTodos={() => <EmptyTodos />}
+        onEmptySearchResults={(searchText) => <p>No hay resultados para {searchText}</p>}
+      //   render={todo => (
+      //     <TodoItem 
+      //       key={todo.text} 
+      //       text={todo.text}
+      //       completed={todo.completed}
+      //       onComplete={() => completeTodo(todo.text)}
+      //       onDelete={() => deleteTodo(todo.text)}
+      //     />
+      //   )}
+      // />
+      >
+        {todo => (
+          <TodoItem 
+            key={todo.text} 
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )}
+      </TodoList>
       <CreateTodoButton
         openModal={openModal}
         setOpenModal={setOpenModal}

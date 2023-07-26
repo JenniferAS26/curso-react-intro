@@ -10,3 +10,7 @@
 .TodoCounter span {
     color: #e4ebc9;
 }
+
+.TodoCounter--loading {
+    opacity: 0.35;
+}

@@ -1,3 +1,9 @@
+.TodoList-container {
+    display: grid;
+    place-items: center;
+    gap: 20px;
+}
+
 .todo-list {
     width: auto;
     display: flex;

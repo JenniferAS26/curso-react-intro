@@ -1,11 +1,24 @@
 import './TodoList.css';
 
-function TodoList({ children }) {
-    return (
-        <ul className='todo-list'>
-            {children}
-        </ul>
-    );
+function TodoList(props) {
+  const renderFunction = props.children || props.render;
+
+  return (
+    <section className="TodoList-container">
+      {props.error && props.onError()}
+      {props.loading && props.onLoading()}
+
+      {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
+
+      {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
+
+      {props.searchedTodos.map(renderFunction)}
+
+      <ul className='todo-list'>
+          {props.children}
+      </ul>
+    </section>
+  );
 }
 
 export { TodoList };
